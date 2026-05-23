@@ -3,12 +3,16 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"strconv"
+	"log/slog"
 )
 
-func home(w http.ResponseWriter, r *http.Request) {
+type application struct {
+	logger *slog.Logger
+}
+
+func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("Server", "Go")
 
@@ -23,23 +27,27 @@ func home(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 
 	if err != nil {
-		log.Print(err.Error())
+
+		app.logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
+
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+
 		return
 	}
 
-	//esto escribe eso aqui y lo manda al cliente para que lo vea
 	err = ts.ExecuteTemplate(w, "base", nil)
 
 	if err != nil {
-		//este es para mi
-		log.Print(err.Error())
-		//este se manda al cliente
+
+		app.logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
+
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+
 	}
+
 }
 
-func snippetView(w http.ResponseWriter, r *http.Request) {
+func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
 	a := r.PathValue("id")
 
@@ -58,11 +66,11 @@ func snippetView(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func snippetCreate(w http.ResponseWriter, r *http.Request) {
+func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Display a form for creating a new snippet"))
 }
 
-func snippetCreatePost(w http.ResponseWriter, r *http.Request) {
+func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 
