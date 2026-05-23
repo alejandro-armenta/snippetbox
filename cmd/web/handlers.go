@@ -23,9 +23,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 
-		app.logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
-
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 
 		return
 	}
@@ -34,9 +32,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 
-		app.logger.Error(err.Error(), "method", r.Method, "uri", r.URL.RequestURI())
-
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		app.serverError(w, r, err)
 
 	}
 
