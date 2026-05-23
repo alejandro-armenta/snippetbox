@@ -5,12 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
-	"log/slog"
 )
-
-type application struct {
-	logger *slog.Logger
-}
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 

@@ -7,7 +7,9 @@ import (
 	"os"
 )
 
-
+type application struct {
+	logger *slog.Logger
+}
 
 func main() {
 
