@@ -46,9 +46,7 @@ func (app *application) snippetView(w http.ResponseWriter, r *http.Request) {
 
 	if error != nil || id < 1 {
 
-		http.NotFound(
-			w,
-			r)
+		http.NotFound(w, r)
 
 		return
 	}
@@ -63,7 +61,23 @@ func (app *application) snippetCreate(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) snippetCreatePost(w http.ResponseWriter, r *http.Request) {
 
-	w.WriteHeader(http.StatusCreated)
+	var (
+		title   = "O snail"
+		content = "O snail\nClimb Mount Fuji,\nBut slowly, slowly!\n\n– Kobayashi Issa"
+		expires = 7
+	)
 
-	w.Write([]byte("Save a new snippet"))
+	id, err := app.snippets.Insert(title, content, expires)
+
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	http.Redirect(
+		w,
+		r,
+		fmt.Sprintf("/snippet/view/%d", id),
+		http.StatusSeeOther)
+
 }
