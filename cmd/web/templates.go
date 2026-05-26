@@ -2,6 +2,7 @@ package main
 
 import (
 	//"html/template"
+	"html/template"
 	"path/filepath"
 
 	"snippetbox.alexarmenta.net/internal/models"
@@ -12,8 +13,33 @@ type templateData struct {
 	Snippets []models.Snippet
 }
 
-func ale() {
-	//cache := map[string]*template.Template{}
+func newTemplateCache() (map[string]*template.Template, error) {
+	cache := map[string]*template.Template{}
 
-	filepath.Glob("../../ui/html/pages/*.tmpl")
+	pages, err := filepath.Glob("./ui/html/pages/*.tmpl")
+
+	if err != nil {
+		return nil, err
+	}
+
+	for _, page := range pages {
+
+		name := filepath.Base(page)
+
+		files := []string{
+			"./ui/html/base.tmpl",
+			"./ui/html/partials/nav.tmpl",
+			page,
+		}
+
+		ts, err := template.ParseFiles(files...)
+
+		if err != nil {
+			return nil, err
+		}
+
+		cache[name] = ts
+	}
+
+	return cache, nil
 }
