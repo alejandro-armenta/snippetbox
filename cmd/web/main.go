@@ -19,11 +19,16 @@ type application struct {
 
 func main() {
 
-	addr := flag.String("addr", ":4000", "HTTP network address")
-	dsn := flag.String("dsn", "web:web@/snippetbox?parseTime=true", "MySQL data source name")
+	addr := flag.String("addr", "", "HTTP network address")
+	dsn := flag.String("dsn", "", "MySQL data source name")
 	flag.Parse()
 
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
+	if *addr == "" || *dsn == "" {
+		logger.Error("Invalid input options")
+		os.Exit(1)
+	}
 
 	openDB := func(dsn string) (*sql.DB, error) {
 		db, err := sql.Open("mysql", dsn)
@@ -53,7 +58,7 @@ func main() {
 	defer db.Close()
 
 	app := &application{
-		logger: logger,
+		logger:   logger,
 		snippets: &models.SnippetModel{DB: db},
 	}
 
