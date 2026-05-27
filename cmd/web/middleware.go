@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 // esta madre es polimorfica
 func commonHeaders(next http.Handler) http.Handler {
@@ -28,9 +31,7 @@ func commonHeaders(next http.Handler) http.Handler {
 		})
 }
 
-func (app *application) logRequest(
-	next http.Handler,
-) http.Handler {
+func (app *application) logRequest(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(
 
@@ -50,6 +51,28 @@ func (app *application) logRequest(
 				"method", method,
 				"uri", uri,
 			)
+
+			next.ServeHTTP(w, r)
+		})
+}
+
+func (app *application) recoverPanic(next http.Handler) http.Handler {
+
+	return http.HandlerFunc(
+
+		func(w http.ResponseWriter, r *http.Request) {
+
+			defer func() {
+				pv := recover()
+
+				if pv != nil {
+
+					w.Header().Set("Connection", "Close")
+
+					app.serverError(w, r, fmt.Errorf("%v", pv))
+				}
+
+			}()
 
 			next.ServeHTTP(w, r)
 		})
