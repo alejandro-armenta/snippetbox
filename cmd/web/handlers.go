@@ -26,6 +26,13 @@ type userSignupForm struct {
 	validator.Validator `form:"-"`
 }
 
+type userLoginForm struct {
+	Email    string `form:"email"`
+	Password string `form:"password"`
+
+	validator.Validator `form:"-"`
+}
+
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 
 	snippets, err := app.snippets.Latest()

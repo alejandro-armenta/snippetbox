@@ -1,0 +1,69 @@
+Date : 2026-05-28 22:37:05
+Directory : /home/alejandro-armenta/code/snippetbox
+Total : 23 files,  1054 codes, 7 comments, 345 blanks, all 1406 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| Go                 |         10 |        592 |          7 |        255 |        854 |
+| PostCSS            |          1 |        263 |          0 |         51 |        314 |
+| Go Template File   |          6 |        142 |          0 |         26 |        168 |
+| Go Checksum File   |          1 |         17 |          0 |          1 |         18 |
+| Go Module File     |          1 |         13 |          0 |          4 |         17 |
+| MS SQL             |          1 |          8 |          0 |          1 |          9 |
+| JSON with Comments |          1 |          8 |          0 |          0 |          8 |
+| JavaScript         |          1 |          8 |          0 |          4 |         12 |
+| Markdown           |          1 |          3 |          0 |          3 |          6 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                       |         23 |      1,054 |          7 |        345 |      1,406 |
+| . (Files)                                                               |          5 |         49 |          0 |          9 |         58 |
+| cmd                                                                     |          6 |        401 |          7 |        186 |        594 |
+| cmd/web                                                                 |          6 |        401 |          7 |        186 |        594 |
+| internal                                                                |          4 |        191 |          0 |         69 |        260 |
+| internal/models                                                         |          3 |        146 |          0 |         53 |        199 |
+| internal/validator                                                      |          1 |         45 |          0 |         16 |         61 |
+| ui                                                                      |          8 |        413 |          0 |         81 |        494 |
+| ui/html                                                                 |          6 |        142 |          0 |         26 |        168 |
+| ui/html (Files)                                                         |          1 |         28 |          0 |          1 |         29 |
+| ui/html/pages                                                           |          4 |         99 |          0 |         23 |        122 |
+| ui/html/partials                                                        |          1 |         15 |          0 |          2 |         17 |
+| ui/static                                                               |          2 |        271 |          0 |         55 |        326 |
+| ui/static/css                                                           |          1 |        263 |          0 |         51 |        314 |
+| ui/static/js                                                            |          1 |          8 |          0 |          4 |         12 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                | language           | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /home/alejandro-armenta/code/snippetbox/README.md                       | Markdown           |          3 |          0 |          3 |          6 |
+| /home/alejandro-armenta/code/snippetbox/a.sql                           | MS SQL             |          8 |          0 |          1 |          9 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/handlers.go             | Go                 |        130 |          1 |         67 |        198 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/helpers.go              | Go                 |         70 |          0 |         28 |         98 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/main.go                 | Go                 |         86 |          2 |         29 |        117 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/middleware.go           | Go                 |         49 |          3 |         28 |         80 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/routes.go               | Go                 |         22 |          0 |         15 |         37 |
+| /home/alejandro-armenta/code/snippetbox/cmd/web/templates.go            | Go                 |         44 |          1 |         19 |         64 |
+| /home/alejandro-armenta/code/snippetbox/go.mod                          | Go Module File     |         13 |          0 |          4 |         17 |
+| /home/alejandro-armenta/code/snippetbox/go.sum                          | Go Checksum File   |         17 |          0 |          1 |         18 |
+| /home/alejandro-armenta/code/snippetbox/internal/models/errors.go       | Go                 |          7 |          0 |          3 |         10 |
+| /home/alejandro-armenta/code/snippetbox/internal/models/snippets.go     | Go                 |         94 |          0 |         35 |        129 |
+| /home/alejandro-armenta/code/snippetbox/internal/models/users.go        | Go                 |         45 |          0 |         15 |         60 |
+| /home/alejandro-armenta/code/snippetbox/internal/validator/validator.go | Go                 |         45 |          0 |         16 |         61 |
+| /home/alejandro-armenta/code/snippetbox/snippetbox.code-workspace       | JSON with Comments |          8 |          0 |          0 |          8 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/base.tmpl               | Go Template File   |         28 |          0 |          1 |         29 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/pages/create.tmpl       | Go Template File   |         31 |          0 |          3 |         34 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/pages/home.tmpl         | Go Template File   |         23 |          0 |         16 |         39 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/pages/signup.tmpl       | Go Template File   |         29 |          0 |          2 |         31 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/pages/view.tmpl         | Go Template File   |         16 |          0 |          2 |         18 |
+| /home/alejandro-armenta/code/snippetbox/ui/html/partials/nav.tmpl       | Go Template File   |         15 |          0 |          2 |         17 |
+| /home/alejandro-armenta/code/snippetbox/ui/static/css/main.css          | PostCSS            |        263 |          0 |         51 |        314 |
+| /home/alejandro-armenta/code/snippetbox/ui/static/js/main.js            | JavaScript         |          8 |          0 |          4 |         12 |
+| Total                                                                   |                    |      1,054 |          7 |        345 |      1,406 |
++-------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

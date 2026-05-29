@@ -1,0 +1,25 @@
+"filename", "language", "Go Module File", "Go", "MS SQL", "JSON with Comments", "Markdown", "JavaScript", "Go Checksum File", "PostCSS", "Go Template File", "comment", "blank", "total"
+"/home/alejandro-armenta/code/snippetbox/README.md", "Markdown", 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 6
+"/home/alejandro-armenta/code/snippetbox/a.sql", "MS SQL", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/home/alejandro-armenta/code/snippetbox/cmd/web/handlers.go", "Go", 0, 130, 0, 0, 0, 0, 0, 0, 0, 1, 67, 198
+"/home/alejandro-armenta/code/snippetbox/cmd/web/helpers.go", "Go", 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 28, 98
+"/home/alejandro-armenta/code/snippetbox/cmd/web/main.go", "Go", 0, 86, 0, 0, 0, 0, 0, 0, 0, 2, 29, 117
+"/home/alejandro-armenta/code/snippetbox/cmd/web/middleware.go", "Go", 0, 49, 0, 0, 0, 0, 0, 0, 0, 3, 28, 80
+"/home/alejandro-armenta/code/snippetbox/cmd/web/routes.go", "Go", 0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 15, 37
+"/home/alejandro-armenta/code/snippetbox/cmd/web/templates.go", "Go", 0, 44, 0, 0, 0, 0, 0, 0, 0, 1, 19, 64
+"/home/alejandro-armenta/code/snippetbox/go.mod", "Go Module File", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 17
+"/home/alejandro-armenta/code/snippetbox/go.sum", "Go Checksum File", 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 1, 18
+"/home/alejandro-armenta/code/snippetbox/internal/models/errors.go", "Go", 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 3, 10
+"/home/alejandro-armenta/code/snippetbox/internal/models/snippets.go", "Go", 0, 94, 0, 0, 0, 0, 0, 0, 0, 0, 35, 129
+"/home/alejandro-armenta/code/snippetbox/internal/models/users.go", "Go", 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 15, 60
+"/home/alejandro-armenta/code/snippetbox/internal/validator/validator.go", "Go", 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 16, 61
+"/home/alejandro-armenta/code/snippetbox/snippetbox.code-workspace", "JSON with Comments", 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 8
+"/home/alejandro-armenta/code/snippetbox/ui/html/base.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 28, 0, 1, 29
+"/home/alejandro-armenta/code/snippetbox/ui/html/pages/create.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 3, 34
+"/home/alejandro-armenta/code/snippetbox/ui/html/pages/home.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 16, 39
+"/home/alejandro-armenta/code/snippetbox/ui/html/pages/signup.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 2, 31
+"/home/alejandro-armenta/code/snippetbox/ui/html/pages/view.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 2, 18
+"/home/alejandro-armenta/code/snippetbox/ui/html/partials/nav.tmpl", "Go Template File", 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 2, 17
+"/home/alejandro-armenta/code/snippetbox/ui/static/css/main.css", "PostCSS", 0, 0, 0, 0, 0, 0, 0, 263, 0, 0, 51, 314
+"/home/alejandro-armenta/code/snippetbox/ui/static/js/main.js", "JavaScript", 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 4, 12
+"Total", "-", 13, 592, 8, 8, 3, 8, 17, 263, 142, 7, 345, 1406
