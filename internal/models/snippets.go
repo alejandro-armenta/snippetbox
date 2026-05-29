@@ -18,7 +18,7 @@ type SnippetModel struct {
 	DB *sql.DB
 }
 
-func (m *SnippetModel) Insert(title string, content string, expires int) (int, error) {
+func (m *SnippetModel) Insert(title, content string, expires int) (int, error) {
 
 	stmt :=
 		`
