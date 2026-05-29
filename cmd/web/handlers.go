@@ -192,7 +192,13 @@ func (app *application) userSignupPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) userLogin(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Display a form for loging in a user")
+
+	data := app.newTemplateData(r)
+
+	data.Form = userLoginForm{}
+
+	app.render(w, r, http.StatusOK, "login.tmpl", data)
+
 }
 
 func (app *application) userLoginPost(w http.ResponseWriter, r *http.Request) {
