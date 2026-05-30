@@ -5,75 +5,85 @@ import (
 	"net/http"
 )
 
-// esta madre es polimorfica
-func commonHeaders(next http.Handler) http.Handler {
-
+func (app *application) requireAuthentication(next http.Handler) http.Handler {
 	return http.HandlerFunc(
-
 		func(w http.ResponseWriter, r *http.Request) {
 
-			w.Header().Set("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com")
+			if !app.isAuthenticated(r) {
+				http.Redirect(w, r, "/user/login", http.StatusSeeOther)
+				return
+			}
 
-			w.Header().Set("Referrer-Policy", "origin-when-cross-origin")
+			w.Header().Add("Cache-Control", "no-store")
 
-			w.Header().Set("X-Content-Type-Options", "nosniff")
-
-			w.Header().Set("X-Frame-Options", "deny")
-
-			w.Header().Set("X-XSS-Protection", "0")
-
-			w.Header().Set("Server", "Go")
-
-			//tiene que usar esta para llegar hasta mis handlers!
-			//esta madre es un stack
 			next.ServeHTTP(w, r)
 
 		})
+}
+
+// esta madre es polimorfica
+func commonHeaders(next http.Handler) http.Handler {
+
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		w.Header().Set("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com")
+
+		w.Header().Set("Referrer-Policy", "origin-when-cross-origin")
+
+		w.Header().Set("X-Content-Type-Options", "nosniff")
+
+		w.Header().Set("X-Frame-Options", "deny")
+
+		w.Header().Set("X-XSS-Protection", "0")
+
+		w.Header().Set("Server", "Go")
+
+		//tiene que usar esta para llegar hasta mis handlers!
+		//esta madre es un stack
+		next.ServeHTTP(w, r)
+
+	})
 }
 
 func (app *application) logRequest(next http.Handler) http.Handler {
 
-	return http.HandlerFunc(
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		func(w http.ResponseWriter, r *http.Request) {
+		var (
+			ip     = r.RemoteAddr
+			proto  = r.Proto
+			method = r.Method
+			uri    = r.URL.RequestURI()
+		)
 
-			var (
-				ip     = r.RemoteAddr
-				proto  = r.Proto
-				method = r.Method
-				uri    = r.URL.RequestURI()
-			)
+		app.logger.Info(
+			"received request",
+			"ip", ip,
+			"proto", proto,
+			"method", method,
+			"uri", uri,
+		)
 
-			app.logger.Info(
-				"received request",
-				"ip", ip,
-				"proto", proto,
-				"method", method,
-				"uri", uri,
-			)
-
-			next.ServeHTTP(w, r)
-		})
+		next.ServeHTTP(w, r)
+	})
 }
 
 func (app *application) recoverPanic(next http.Handler) http.Handler {
 
-	return http.HandlerFunc(
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			pv := recover()
 
-			defer func() {
-				pv := recover()
+			if pv != nil {
 
-				if pv != nil {
+				w.Header().Set("Connection", "Close")
 
-					w.Header().Set("Connection", "Close")
+				app.serverError(w, r, fmt.Errorf("%v", pv))
+			}
 
-					app.serverError(w, r, fmt.Errorf("%v", pv))
-				}
+		}()
 
-			}()
-
-			next.ServeHTTP(w, r)
-		})
+		next.ServeHTTP(w, r)
+	})
 }
