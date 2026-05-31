@@ -8,11 +8,6 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/cmd/web",
-            "cwd": "${workspaceFolder}",
-            "args":[
-                "-addr=:4000",
-                "-dsn=web:web@/snippetbox?parseTime=true"
-            ]
         }
     ]
 }
