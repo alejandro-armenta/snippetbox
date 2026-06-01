@@ -30,6 +30,10 @@ func TestPing(t *testing.T) {
 
 	body, err := io.ReadAll(res.Body)
 
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	body = bytes.TrimSpace(body)
 
 	assert.Equal(t, string(body), "OK")
