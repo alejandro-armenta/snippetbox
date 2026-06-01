@@ -85,6 +85,7 @@ func commonHeaders(next http.Handler) http.Handler {
 
 		//tiene que usar esta para llegar hasta mis handlers!
 		//esta madre es un stack
+		//esta madre puede ser lo que sea
 		next.ServeHTTP(w, r)
 
 	})
